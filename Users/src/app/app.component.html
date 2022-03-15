@@ -1,0 +1,65 @@
+<div class="row pt-5">
+  <div class="col-md-6 mx-auto">
+   <div class="card rounded-0">
+     <div class="card-header">
+       <h3 class="mb-0">DataForm</h3>
+     </div>
+     <div class="card-body">
+      <form #updateForm="ngForm" id="updateForm" (ngSubmit)="updateUsers()">
+        <input [(ngModel)] ="userData.id" name="id"  type="hidden" class="form-control rounded-0" required>
+
+        <div class="form-group">
+          <label for="">Name</label>
+          <input [(ngModel)] ="userData.name" name="Name"  type="text" class="form-control rounded-0" required>
+        </div>
+
+        <div class="form-group">
+          <label for="">SurName</label>
+          <input [(ngModel)] ="userData.surname" name="surname"  type="text" class="form-control rounded-0" required>
+        </div>
+
+        <div class="form-group">
+          <label for="">Email</label>
+          <input [(ngModel)] ="userData.email" name="name"  type="text" class="form-control rounded-0" required>
+        </div>
+
+        <div class="form-group">
+          <label for="">Programming Language.</label>
+          <input [(ngModel)] ="userData.programmingLanguage" name="name"  type="text" class="form-control rounded-0" required>
+        </div>
+      </form>
+     </div>
+   </div>
+  </div>
+</div>
+    
+
+<html></html>
+
+    <table class="table table-bordered"  *ngFor="let person of users">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Surname</th>
+          <th>Coding Language</th>
+          <th>Buttons</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th (click)="populateForm(person)"  scope="row">{{person.name}}</th>
+          <td (click)="populateForm(person)" >{{person.email}}</td>
+          <td (click)="populateForm(person)" >{{person.surname}}</td>
+          <td (click)="populateForm(person)" >{{person.programmingLanguage}}</td>
+        <td>
+          <div class="btn-group" style="width:50%">
+            <button (click) ="postUsers()" type="button" class="btn btn-primary "> Save</button><br>
+            <button form="updateForm" type="submit" class="btn btn-secondary ">Update</button><br>
+            <button (click) ="onDelete(person.id)" type="submit" class="btn btn-primary ">Delete</button><div></div>
+            </div>
+        </td>
+        </tr>
+     
+      </tbody>
+    </table>
